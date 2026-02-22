@@ -60,4 +60,44 @@ else if (reporte < 1 || reporte > 3)
     Console.WriteLine("Error: Reporte antifraude fuera de rango (1-3).");
     return;
 }
-double pctDescuento = 0.0;
+
+double pctDescBase = 0.0;
+
+switch (tipoCliente)
+{
+    case 1: // Estudiante
+        switch (metodo)
+        {
+            case 1: pctDescBase = 0.10; break; // Efectivo
+            case 2: pctDescBase = 0.07; break; // Tarjeta
+            case 3: pctDescBase = 0.05; break; // Transferencia
+        }
+        break;
+
+    case 2: // Docente
+        switch (metodo)
+        {
+            case 1: pctDescBase = 0.08; break;
+            case 2: pctDescBase = 0.05; break;
+            case 3: pctDescBase = 0.04; break;
+        }
+        break;
+
+    case 3: // Administrativo
+        switch (metodo)
+        {
+            case 1: pctDescBase = 0.06; break;
+            case 2: pctDescBase = 0.04; break;
+            case 3: pctDescBase = 0.03; break;
+        }
+        break;
+
+    case 4: // Externo
+        switch (metodo)
+        {
+            case 1: pctDescBase = 0.02; break;
+            case 2: pctDescBase = 0.01; break;
+            case 3: pctDescBase = 0.00; break;
+        }
+        break;
+}
