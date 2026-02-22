@@ -1,4 +1,6 @@
-﻿Console.WriteLine("SISTEMA DE FACTURACION CON CONTROL ANTIFRAUDE");
+﻿using System.ComponentModel.Design;
+
+Console.WriteLine("SISTEMA DE FACTURACION CON CONTROL ANTIFRAUDE");
 Console.WriteLine("Tipo de cliente");
 Console.WriteLine("1. Estudiante");
 Console.WriteLine("2. Docente");
@@ -129,3 +131,22 @@ if (tieneCupon == "S")
         pctDescCupon = 0.0;
     }
 }
+// Calcular descuentos
+double descuentoBase = montoBase * pctDescBase;
+double descuentoCupon = montoBase * pctDescCupon;
+double totalDescuento = descuentoBase + descuentoCupon;
+
+//Atifraude
+double multa = 0.0;
+string mensajeFraude = "Ninguna";
+if (reporte == 2)
+{
+    multa = montoBase * 0.10;
+    mensajeFraude = "Cupón inválido repetido";
+}
+else if (reporte == 3)
+{
+    multa = montoBase * 0.20;
+    mensajeFraude = "Pagos rechazados múltiples";
+}
+double recargo = montoBase * multa;
