@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.Design;
-
-Console.WriteLine("SISTEMA DE FACTURACION CON CONTROL ANTIFRAUDE");
+﻿Console.WriteLine("SISTEMA DE FACTURACION CON CONTROL ANTIFRAUDE");
 Console.WriteLine("Tipo de cliente");
 Console.WriteLine("1. Estudiante");
 Console.WriteLine("2. Docente");
@@ -150,3 +148,39 @@ else if (reporte == 3)
     mensajeFraude = "Pagos rechazados múltiples";
 }
 double recargo = montoBase * multa;
+
+//Total
+double totalPagar = montoBase - totalDescuento + recargo;
+
+Console.WriteLine("*FACTURA*");
+Console.WriteLine($"Monto base: Q{montoBase:0.00}");
+
+Console.WriteLine("-DESCUENTOS APLICADOS");
+Console.WriteLine($"Descuento por tipo de cliente y método de pago: Q{descuentoBase:0.00}");
+if (tieneCupon == "S")
+{
+    if (cuponValido == 1)
+    {
+        Console.WriteLine($"Descuento por cupón (válido): Q{descuentoCupon:0.00}");
+    }
+    else
+    {
+        Console.WriteLine($"Descuento por cupón (inválido): Q{descuentoCupon:0.00}");
+    }
+}
+else
+{
+    Console.WriteLine("No se aplicó descuento por cupón.");
+}
+Console.WriteLine("-MULTA ANTIFRAUDE");
+if (reporte == 1)
+{
+    Console.WriteLine("No se aplicó multa antifraude.");
+}
+else
+{
+    Console.WriteLine($"Multa por reporte '{mensajeFraude}': Q{recargo:0.00}");
+}
+Console.WriteLine("*TOTAL A PAGAR*");
+Console.WriteLine($"Q{totalPagar:0.00}");
+// Ya no quiero :(
