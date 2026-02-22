@@ -6,8 +6,7 @@ Console.WriteLine("3. Administrativo");
 Console.WriteLine("4. Externo");
 Console.WriteLine("Ingrese el tipo de cliente (1-4):");
 int tipoCliente = int.Parse(Console.ReadLine());
-Console.Write("Monto base: ");
-string montoTxt = Console.ReadLine();
+Console.Write("Monto base ( use punto decimal ej. 1234.56): ");
 double montoBase = double.Parse(Console.ReadLine());
 Console.WriteLine("Método de pago:");
 Console.WriteLine("1) Efectivo");
@@ -106,6 +105,21 @@ double pctDescCupon = 0.0;
 int cuponValido = 0;
 if (tieneCupon == "S")
 {
+    string cod = codigoCupon;
+    if (cod.Length >= 2)
+    {
+        string primera = cod.Substring(0, 1);
+        string ultima = cod.Substring(cod.Length - 1);
+
+        int digitoFinal = -1;
+        if (primera == "U" && int.TryParse(ultima, out digitoFinal))
+        {
+            if (digitoFinal % 2 == 0)
+            {
+                cuponValido = 1;
+            }   
+        }
+    }
     if (cuponValido == 1)
     {
         pctDescCupon = 0.05;
