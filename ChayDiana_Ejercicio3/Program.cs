@@ -23,7 +23,7 @@ if (tieneCupon == "S")
     Console.Write("Ingrese código de cupón: ");
     codigoCupon = Console.ReadLine().Trim().ToUpper();
 }
-Console.WriteLine("\nReporte antifraude:");
+Console.WriteLine("Reporte antifraude:");
 Console.WriteLine("1) Ninguno");
 Console.WriteLine("2) Cupón inválido repetido");
 Console.WriteLine("3) Pagos rechazados múltiples");
@@ -100,4 +100,18 @@ switch (tipoCliente)
             case 3: pctDescBase = 0.00; break;
         }
         break;
+}
+// Cupon válido con inicial U y que termine en numero par
+double pctDescCupon = 0.0;
+int cuponValido = 0;
+if (tieneCupon == "S")
+{
+    if (cuponValido == 1)
+    {
+        pctDescCupon = 0.05;
+    }
+    else
+    {
+        pctDescCupon = 0.0;
+    }
 }
